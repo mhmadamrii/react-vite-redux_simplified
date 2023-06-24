@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   const storeState = useSelector((state) => state);
   const { user } = storeState;
-  console.log(storeState);
+  console.log("navbar", storeState);
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-between" }}>

@@ -25,6 +25,7 @@ export default function App() {
             <Route path="/" element={<CounterContainer />} />
             <Route path="/todo" element={<TodoContainer />} />
             <Route path="/playground" element={<Playground />} />
+            <Route path="/login" element={<Auth />} />
           </>
         ) : (
           <>

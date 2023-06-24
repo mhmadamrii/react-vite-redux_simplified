@@ -14,7 +14,7 @@ const initialTodo = [
 ];
 
 const initialUser = {
-  username: "default profile",
+  username: "",
   isLoggedIn: false,
 };
 
@@ -26,7 +26,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   console.log("state", state);
-  console.log("action", action);
+  console.log("action", action.payload);
   switch (action.type) {
     case "INCREMENT":
       return { ...state, count: state.count + 1 };
