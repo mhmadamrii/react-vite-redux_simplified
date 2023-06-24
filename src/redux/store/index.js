@@ -13,9 +13,15 @@ const initialTodo = [
   },
 ];
 
+const initialUser = {
+  username: "default profile",
+  isLoggedIn: false,
+};
+
 const initialState = {
   count: 0,
   todos: initialTodo,
+  user: initialUser,
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,6 +34,10 @@ const reducer = (state = initialState, action) => {
       return { ...state, count: state.count - 1 };
     case "ADD_TODO":
       return { ...state, todos: [...state.todos, action.payload] };
+    case "LOGIN":
+      return { ...state, user: { isLoggedIn: true, username: action.payload } };
+    case "LOGOUT":
+      return { ...state, user: { isLoggedIn: false, username: "" } };
     default:
       return state;
   }
