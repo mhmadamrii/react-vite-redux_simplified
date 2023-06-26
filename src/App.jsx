@@ -1,20 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./index.css";
 import { useSelector } from "react-redux";
-import store from "./redux/store";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { routes } from "./routes";
 
 /* screens */
-import CounterContainer from "./screens/counter";
-import TodoContainer from "./screens/todos";
 import Playground from "./screens/vim-playground";
 import Auth from "./screens/authentication";
 import NotFoundPage from "./screens/not-found-page";
 import Navbar from "./components/navbar";
 
 export default function App() {
-  const stateStore = useSelector((state) => state);
-  const { user } = stateStore;
+  const user = useSelector((state) => state.user);
+  console.log("user", user);
+  console.log("routes", routes);
 
   return (
     <Router>
@@ -22,10 +21,9 @@ export default function App() {
       <Routes>
         {user.isLoggedIn ? (
           <>
-            <Route path="/" element={<CounterContainer />} />
-            <Route path="/todo" element={<TodoContainer />} />
-            <Route path="/playground" element={<Playground />} />
-            <Route path="/login" element={<Auth />} />
+            {routes.map((route, index) => (
+              <Route key={index} path={route.path} element={<route.component />} />
+            ))}
           </>
         ) : (
           <>
