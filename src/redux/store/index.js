@@ -18,10 +18,15 @@ const initialUser = {
   isLoggedIn: false,
 };
 
+const initialCart = {
+  items: [],
+};
+
 const initialState = {
   count: 0,
   todos: initialTodo,
   user: initialUser,
+  cart: initialCart,
 };
 
 const reducer = (state = initialState, action) => {
@@ -38,6 +43,11 @@ const reducer = (state = initialState, action) => {
       return { ...state, user: { isLoggedIn: true, username: action.payload } };
     case "LOGOUT":
       return { ...state, user: { isLoggedIn: false, username: "" } };
+    case "ADD_TO_CART":
+      return {
+        ...state,
+        cart: { items: [...state.cart.items, action.payload] },
+      };
     default:
       return state;
   }

@@ -12,8 +12,8 @@ import Navbar from "./components/navbar";
 
 export default function App() {
   const user = useSelector((state) => state.user);
-  console.log("user", user);
-  console.log("routes", routes);
+  // console.log("user", user);
+  // console.log("routes", routes);
 
   return (
     <Router>
@@ -22,7 +22,11 @@ export default function App() {
         {user.isLoggedIn ? (
           <>
             {routes.map((route, index) => (
-              <Route key={index} path={route.path} element={<route.component />} />
+              <Route
+                key={index}
+                path={route.path}
+                element={<route.component />}
+              />
             ))}
           </>
         ) : (

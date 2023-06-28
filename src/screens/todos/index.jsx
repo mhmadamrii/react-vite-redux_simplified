@@ -5,7 +5,7 @@ import Todo from "./Todo";
 const TodoContainer = (props) => {
   const { addTodo } = props;
   const [inputTodo, setInputTodo] = useState("");
-  console.log("input todo", inputTodo);
+  // console.log("input todo", inputTodo);
 
   const handleChangeInput = useCallback((e) => {
     setInputTodo(e.target.value);
@@ -18,7 +18,7 @@ const TodoContainer = (props) => {
       isDone: false,
     };
 
-    console.log("new todo", newTodo);
+    // console.log("new todo", newTodo);
 
     addTodo(newTodo);
   };

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   const storeState = useSelector((state) => state);
   const { user } = storeState;
-  console.log("navbar", storeState);
+  // console.log("navbar", storeState);
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -16,7 +16,8 @@ export default function Navbar() {
         <div>
           <Link to="/">Increment & decrement</Link> <br />
           <Link to="/todo">Fucking todo app</Link> <br />
-          <Link to="/playground">Playground</Link>
+          <Link to="/playground">Playground</Link> <br />
+          <Link to="/cart">cart tutorials</Link>
         </div>
       </div>
     </>

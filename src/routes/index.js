@@ -1,6 +1,7 @@
 import CounterContainer from "../screens/counter";
 import TodoContainer from "../screens/todos";
 import Auth from "../screens/authentication";
+import Cart from "../screens/cart";
 
 export const routes = [
   {
@@ -17,5 +18,10 @@ export const routes = [
     id: 3,
     path: "/login",
     component: Auth,
+  },
+  {
+    id: 4,
+    path: "/cart",
+    component: Cart,
   },
 ];

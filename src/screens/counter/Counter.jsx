@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 const Counter = (props) => {
   const { count, increment, decrement } = props;
   const renders = useRef(0);
-  console.log("component renders", renders.current++);
+  // console.log("component renders", renders.current++);
 
   /* after memoization */
   return (
