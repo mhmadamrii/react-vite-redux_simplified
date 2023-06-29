@@ -1,4 +1,6 @@
 import React from "react";
+import CartModalContainer from "../../components/modals/cart";
+import { Button } from "@react-md/button";
 
 const Cart = (props) => {
   const { handleGetProducts, dataProducts } = props;
@@ -14,13 +16,21 @@ const Cart = (props) => {
       {dataProducts?.map((item) => {
         console.log(item);
         return (
-          <div key={item.key} style={{ border: "1px solid", height: 100 }}>
+          <div
+            key={item.key}
+            style={{ border: "1px solid", height: 100 }}
+            onClick={() => console.log("item", item)}
+          >
             <img src={item.image} alt="images" width={40} />
             <h4>{item.title}</h4>
-            <button>Add to cart</button>
+            <Button theme="primary" themeType="outlined">
+              Add to cart
+            </Button>
           </div>
         );
       })}
+
+      <CartModalContainer />
     </>
   );
 };

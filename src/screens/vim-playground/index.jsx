@@ -17,6 +17,7 @@ export default function PlaygroundContainer() {
   const handleChangeInput = (e) => {
     setInputList(e.target.value);
   };
+
   const handleAddList = useCallback(() => {
     const newDummies = [
       ...dummiesData,
