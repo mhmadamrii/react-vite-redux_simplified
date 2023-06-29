@@ -9,9 +9,13 @@ const Auth = (props) => {
     setInput(e.target.value);
   }, []);
 
-  const handleLogin = useCallback(() => {
-    loginUser(input);
-  }, [input]);
+  const handleLogin = useCallback(
+    (e) => {
+      e.preventDefault();
+      loginUser(input);
+    },
+    [input]
+  );
 
   return (
     <Authentication

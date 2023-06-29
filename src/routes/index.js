@@ -2,6 +2,7 @@ import CounterContainer from "../screens/counter";
 import TodoContainer from "../screens/todos";
 import Auth from "../screens/authentication";
 import Cart from "../screens/cart";
+import PlaygroundContainer from "../screens/vim-playground";
 
 export const routes = [
   {
@@ -23,5 +24,10 @@ export const routes = [
     id: 4,
     path: "/cart",
     component: Cart,
+  },
+  {
+    id: 5,
+    path: "/playground",
+    component: PlaygroundContainer,
   },
 ];
