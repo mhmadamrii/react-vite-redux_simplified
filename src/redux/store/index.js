@@ -15,7 +15,7 @@ const initialTodo = [
 
 const initialUser = {
   username: "",
-  isLoggedIn: false,
+  isLoggedIn: true,
 };
 
 const initialCart = {
