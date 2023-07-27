@@ -1,56 +1,21 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
 
-import { TableContainer, Table, TableHeader, TableBody, TableRow, TableCell } from "@react-md/table";
-
-import { Button } from "@react-md/button";
-
-const Playground = (props) => {
-  const { inputRef, data, onChange, onAddList, counter, addCounter } = props;
-  const storeState = useSelector((state) => state);
-  const { user } = storeState;
-
+export default function Playground(props) {
+  const { dataQuery } = props;
+  console.log("data queryyyyy", dataQuery);
   return (
-    <>
-      {user.isLoggedIn === false ? <Navigate to="/login" replace={true} /> : null}
-
-      <center>
-        <h1>{counter}</h1>
-        <button onClick={addCounter}>add count</button>
-      </center>
-
-      {data.map((item) => {
+    <main>
+      <center>Hello world!</center>
+      {dataQuery?.map((product) => {
+        const { image, name, price, qty } = product;
         return (
-          <>
-            <form onSubmit={onAddList} key={item.id} style={{ border: "1px solid red", marginBottom: 30 }}>
-              <TableContainer>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableCell>Qty</TableCell>
-                      <TableCell>Product code</TableCell>
-                      <TableCell>Price</TableCell>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell>
-                        <input onChange={onChange} ref={inputRef} />
-                      </TableCell>
-                      <TableCell>
-                        <h1>{item.title}</h1>
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </form>
-          </>
+          <div key={product?.id} style={{ border: "1px solid red", width: 400 }}>
+            <center>
+              <h1>{name}</h1>
+            </center>
+          </div>
         );
       })}
-    </>
+    </main>
   );
-};
-
-export default React.memo(Playground);
+}

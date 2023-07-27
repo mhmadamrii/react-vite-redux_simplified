@@ -1,47 +1,27 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Navigate } from "react-router-dom";
+import React, { useState } from "react";
 import Playground from "./Playground";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 export default function PlaygroundContainer() {
-  const [inputList, setInputList] = useState("");
-  const [counter, setCounter] = useState(0);
-  const [dummiesData, setDummiesData] = useState([
-    {
-      id: 1,
-      title: "fuck",
-      des: "Lorem ipsum dolor",
-      isDone: false,
+  const [state, setState] = useState();
+  const myURL = "https://express-creation.vercel.app/api/v1";
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: async () => {
+      try {
+        const response = await axios.get(`${myURL}/products`);
+        setState(response?.data);
+        console.log("response get", response);
+      } catch (error) {
+        console.log({ error });
+      }
     },
-  ]);
+  });
 
-  const handleChangeInput = (e) => {
-    setInputList(e.target.value);
-  };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-  const handleAddList = useCallback(
-    (e) => {
-      e.preventDefault();
-      const newDummies = [
-        ...dummiesData,
-        {
-          id: dummiesData.length + 1,
-          title: inputList,
-          des: "Lorem",
-          isDone: false,
-        },
-      ];
-      setDummiesData(newDummies);
-    },
-    [inputList]
-  );
-
-  const inputRef = useRef(null);
-  useEffect(() => {
-    inputRef.current.focus();
-  }, [dummiesData.length]);
-  return (
-    <>
-      <Playground onChange={handleChangeInput} onAddList={handleAddList} inputRef={inputRef} data={dummiesData} counter={counter} addCounter={() => setCounter((c) => c + 1)} />
-    </>
-  );
+  return <Playground dataQuery={state} />;
 }

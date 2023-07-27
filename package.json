@@ -13,6 +13,7 @@
     "@react-md/button": "^5.1.3",
     "@react-md/dialog": "^5.1.3",
     "@react-md/table": "^5.1.4",
+    "@tanstack/react-query": "^4.32.0",
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
