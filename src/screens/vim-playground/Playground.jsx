@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Stripped from "../../components/Stripped";
 
 export default function Playground(props) {
   const { dataQuery } = props;
@@ -16,6 +17,8 @@ export default function Playground(props) {
           </div>
         );
       })}
+
+      <Stripped />
     </main>
   );
 }
